@@ -21,7 +21,14 @@ CSS STRUCTURE:
 1. VARIABLES
 2. GENERAL TYPOGRAPHY
 
+
+
+
+
 --------------------------------------------------------------*/
+
+
+
 body {
   --heading-font: "Marcellus", Roboto, sans-serif;
   --heading-font-weight: 400;
