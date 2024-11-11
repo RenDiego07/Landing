@@ -1,4 +1,4 @@
-const databaseURL = 'https://landing-c96d7-default-rtdb.firebaseio.com/coleccion.json';
+const databaseURL = 'https://jmdiego-5c19d-default-rtdb.firebaseio.com/requests.json';
 let sendData = () => { 
     // Obtén los datos del formulario
     const formData = new FormData(form);
@@ -26,6 +26,7 @@ let sendData = () => {
     .then(result => {
         alert('Agradeciendo tu preferencia, nos mantenemos actualizados y enfocados en atenderte como mereces'); // Maneja la respuesta con un mensaje
         form.reset()//hace que desparezcan los datos cada vez que se envian 
+        getData();
     })
     .catch(error => {
         alert('Hemos experimentado un error. ¡Vuelve pronto!'); // Maneja el error con un mensaje
@@ -34,6 +35,7 @@ let sendData = () => {
 
 let ready = () => {
     console.log('DOM está listo')
+    getData();
 }
 
 let loaded = () => {
@@ -64,14 +66,60 @@ let loaded = () => {
 
         }
         sendData();
-
     });
- 
+}
+
+
+let getData = async () => {
+    const suscribers = document.getElementById('subscribers');
+    
+        try{
+            const jData = await fetch(databaseURL, {
+                    method: 'GET'
+            });
+            // verificar la respuesta del servidor
+            if(!jData.ok){
+                throw new Error(`Response ${jData.status}`)
+            }
+            const data = await jData.json();
+            const dic = new Map();
+            if(data !=null){
+                for( const key in data){
+                    const {email, saved} = data[key];
+                    const date_format = saved.split(",");
+                    const date = date_format[0]; 
+                    if(dic.has(date)){
+                        dic.set(date, dic.get(date)+1);
+                    }else{
+                        dic.set(date, 1)
+                    }
+                }
+            }
+
+
+            if(dic.size > 0){
+                suscribers.innerHTML = '';
+                let index = 1;
+                for(let [key,count] of dic){
+                    let template = `
+                        <tr>
+                            <th>${index}</th>
+                            <td>${key}</td>
+                            <td>${count}</td>
+                        </tr>
+                    `
+                    suscribers.innerHTML+= template;
+                    index++;
+                }
+            }        
+        }catch(error){
+            console.error(error.message);
+        }
 }
 
 
 
 
-
 window.addEventListener("DOMContentLoaded", ready);
-window.addEventListener("load", loaded)
+
+window.addEventListener("load", loaded);
