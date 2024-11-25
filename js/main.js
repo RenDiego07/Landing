@@ -72,7 +72,6 @@ let loaded = () => {
 
 let getData = async () => {
     const suscribers = document.getElementById('subscribers');
-    
         try{
             const jData = await fetch(databaseURL, {
                     method: 'GET'
@@ -93,10 +92,9 @@ let getData = async () => {
                     }else{
                         dic.set(date, 1)
                     }
-                }
-            }
-
-
+                } 
+            }   
+            
             if(dic.size > 0){
                 suscribers.innerHTML = '';
                 let index = 1;
