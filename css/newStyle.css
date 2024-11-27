@@ -1,8 +1,11 @@
 
 
+@import url(//fonts.googleapis.com/css?family=Lato:300:400);
+
 
 body{
-    background-color: #fffff3;
+    background-color: #E9E4ED;
+    
 }
 #navList{
     list-style: none;
@@ -14,12 +17,12 @@ header{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: black;
+    background-color: #E9E4ED;
 }
 li > a {
     border-radius: 20px;
     padding: 10px 25px;
-    color: white;
+    color: black;
     position: relative;
 
 }
@@ -63,3 +66,188 @@ li > a {
     background-color: #5c5c5c;
 }
 
+#keyboardTitle{
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.tagLabels{
+    font-size:45px;
+    font-weight:bolder;
+    color: black;
+    font-family: "Noto+Serif";
+}
+
+.bottomBillboard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 153px;
+    width: 386px;
+
+}
+
+.btnBillboard{
+    border-radius: 20px;
+    width: 180px;
+    height: 60px;
+    background-color: #FFFFFF;
+    padding-top: 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+
+}
+.btnText{
+    font-family: "Noto+Serif";
+    font-weight: bolder;
+    color: black;
+
+}
+.Title1{
+    font-family: "Noto+Serif";
+    font-weight: bolder;
+}
+
+.btnBillboard:hover{
+    transform: scale(1.2);
+    background-color: #9A73B5;
+
+}
+
+
+
+
+#container_waves{
+    height: 300px;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.waves {
+    position: relative;
+    width: 100%;
+    height: 15vh;
+    margin-bottom: -7px;
+    /*Fix for safari gap*/
+    min-height: 100px;
+    max-height: 150px;
+  }
+
+
+
+  .parallax > use {
+    animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+  }
+  
+  .parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+  }
+  
+  .parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+  }
+  
+  .parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+  }
+  
+  .parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+  }
+  
+  @keyframes move-forever {
+    0% {
+      transform: translate3d(-90px, 0, 0);
+    }
+  
+    100% {
+      transform: translate3d(85px, 0, 0);
+    }
+  }
+  
+  /* /* Shrinking for mobile */
+  @media (max-width: 768px) {
+    .waves {
+      height: 40px;
+      min-height: 40px;
+    }
+  
+    .content {
+      height: 30vh;
+    }
+  
+    h1 {
+      font-size: 24px;
+      font-family: "Noto+Serif";
+    }
+  }
+
+  .featurette-divider {
+    margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+  }
+
+
+
+@media (min-width: 40em) {
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 7rem;
+  }
+}
+
+/* Carousel base class */
+.carousel {
+  margin-bottom: 4rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 32rem;
+}
+
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+/* rtl:begin:ignore */
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+
+.container_keyname{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
