@@ -6,6 +6,7 @@ let sendData = () => {
     
     // new Date().toLocaleString( locales, options )
     data['saved'] = new Date().toLocaleString('es-CO', { timeZone: 'America/Guayaquil' })
+
     
     // Realiza la petición POST con fetch
     fetch(databaseURL, {
@@ -109,7 +110,10 @@ let getData = async () => {
                     suscribers.innerHTML+= template;
                     index++;
                 }
-            }        
+            }
+            
+            
+
         }catch(error){
             console.error(error.message);
         }

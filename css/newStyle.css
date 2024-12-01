@@ -124,7 +124,7 @@ li > a {
     width:100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items:end;
 
 }
 
@@ -138,6 +138,20 @@ li > a {
     max-height: 150px;
   }
 
+.purpleGradient{
+    height: 200px;
+    
+    background: linear-gradient(
+      180deg,
+      #8B5FBF, /* Rich start matching the wave */
+      #9F6DCC, /* Slightly lighter and vibrant */
+      #B78BDF, /* A richer lavender tone */
+      #D3B3E9, /* Smooth transition to soft lavender */
+      #E9E4ED /* Final blend into the background */
+    );
+    margin-bottom: 20px;
+
+}
 
 
   .parallax > use {
@@ -250,4 +264,33 @@ li > a {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+.FontKeyboards{
+    font-size: 30px;
+    font-weight: bolder;
+    font-family: "Noto+Serif";
+    color: black;
+}
+
+
+.select_section{
+    width: 250px;
+
+
+}
+
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+#output{
+  height: 300px;
+  background-color: #9A73B5;
+  
 }
