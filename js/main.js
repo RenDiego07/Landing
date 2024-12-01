@@ -1,4 +1,4 @@
-const databaseURL = 'https://jmdiego-5c19d-default-rtdb.firebaseio.com/requests.json';
+const databaseURL = 'https://lanren-bea40-default-rtdb.firebaseio.com/LanRen.json';
 let sendData = () => { 
     // Obtén los datos del formulario
     const formData = new FormData(form);
@@ -42,6 +42,7 @@ let ready = () => {
 let loaded = () => {
     console.log('Iframes e Images cargadas')
     let myform = document.getElementById('form');
+
     myform.addEventListener('submit',(eventSubmit)=>{
         eventSubmit.preventDefault();
         //me regresa el cursor dentro del input
@@ -72,7 +73,63 @@ let loaded = () => {
 
 
 let getData = async () => {
-    const suscribers = document.getElementById('subscribers');
+
+    const refDom_container = document.querySelector("#requests")
+
+    try{
+        let jData = await fetch(databaseURL, {
+            method: 'GET'
+        });
+
+        if(!jData.ok){
+            alert("Time out request. Couldn't get an answer from the server");
+        }
+        let data = await jData.json();
+        const dictionary = new Map();
+
+        if(data != null){
+                for(const key in data){
+                    const {desk_mats_select, keyboards_select, keycaps_select} = data[key];
+                    if(dictionary.has(data[key].desk_mats_select)){
+                        dictionary.set(data[key].desk_mats_select, dictionary.get(data[key].desk_mats_select)+1)
+                    }else{
+                        dictionary.set(data[key].desk_mats_select, 1)
+                    }
+
+                    if(dictionary.has(data[key].keyboards_select)){
+                        dictionary.set(data[key].keyboards_select, dictionary.get(data[key].keyboards_select)+1)
+                    }else{
+                        dictionary.set(data[key].keyboards_select, 1)
+                    }
+
+                    if(dictionary.has(data[key].keycaps_select)){
+                        dictionary.set(data[key].keycaps_select, dictionary.get(data[key].keycaps_select)+1)
+                    }else{
+                        dictionary.set(data[key].keycaps_select, 1)
+                    }
+                }
+
+        }
+        
+        refDom_container.innerHTML = '';
+        for(let [name, count] of dictionary){
+            const dic_data =  `
+            <tr>
+                <td>${name}</td>
+                <td>${count}</td>
+            </tr>
+        `
+        refDom_container.innerHTML += dic_data;
+        }
+
+
+    }catch(error){
+        alert("not able to retrieve data from server")
+    }
+        
+
+    /*
+
         try{
             const jData = await fetch(databaseURL, {
                     method: 'GET'
@@ -102,7 +159,6 @@ let getData = async () => {
                 for(let [key,count] of dic){
                     let template = `
                         <tr>
-                            <th>${index}</th>
                             <td>${key}</td>
                             <td>${count}</td>
                         </tr>
@@ -117,6 +173,7 @@ let getData = async () => {
         }catch(error){
             console.error(error.message);
         }
+            */
 }
 
 
