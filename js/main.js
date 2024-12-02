@@ -90,23 +90,16 @@ let getData = async () => {
         if(data != null){
                 for(const key in data){
                     const {desk_mats_select, keyboards_select, keycaps_select} = data[key];
-                    if(dictionary.has(data[key].desk_mats_select)){
-                        dictionary.set(data[key].desk_mats_select, dictionary.get(data[key].desk_mats_select)+1)
-                    }else{
-                        dictionary.set(data[key].desk_mats_select, 1)
-                    }
+                    const products = { desk_mats_select, keyboards_select, keycaps_select };
+                    
+                    Object.entries(products).forEach(([category, value])=>{
+                        if(dictionary.has(value)){
+                            dictionary.set(value, dictionary.get(value)+1)
+                        }else{
+                            dictionary.set(value, 1)
+                        }
 
-                    if(dictionary.has(data[key].keyboards_select)){
-                        dictionary.set(data[key].keyboards_select, dictionary.get(data[key].keyboards_select)+1)
-                    }else{
-                        dictionary.set(data[key].keyboards_select, 1)
-                    }
-
-                    if(dictionary.has(data[key].keycaps_select)){
-                        dictionary.set(data[key].keycaps_select, dictionary.get(data[key].keycaps_select)+1)
-                    }else{
-                        dictionary.set(data[key].keycaps_select, 1)
-                    }
+                    });
                 }
 
         }
